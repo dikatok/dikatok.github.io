@@ -1,0 +1,27 @@
+<div class="container" style="margin:auto;">
+  <nav class="pagination" role="pagination">
+    {% assign psize = site.posts | size %}
+    {% if psize == 0 %} 
+      <p>No posts yet. 😞</p>
+    {% else %}
+        {% if paginator.previous_page %}
+        {% if paginator.previous_page == 1 %}
+        <a class="newer-posts" href="{{ site.baseurl }}/"><i class="fa fa-long-arrow-left" aria-hidden="true"></i></a>
+        {% else %}
+        <a class="newer-posts" href="{{ site.baseurl }}/page/{{ paginator.previous_page }}/"><i class="fa fa-long-arrow-left" aria-hidden="true"></i></a>
+        {% endif %}
+        
+        &nbsp;
+        &nbsp;
+      {% endif %}
+
+      <span class="page-number">Page {{paginator.page}} of {{paginator.total_pages}}</span>
+
+      {% if paginator.next_page %}
+        &nbsp;
+        &nbsp;
+        <a class="older-posts" href="{{ site.baseurl }}/page/{{ paginator.next_page }}/"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
+      {% endif %}
+    {% endif %}
+  </nav>
+</div>
